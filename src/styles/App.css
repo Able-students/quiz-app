@@ -1,0 +1,14 @@
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.active-btn {
+    background-color: cornflowerblue;
+}
+
+button {
+    border: none;
+    height: 36px;
+    margin: 20px;
+}
