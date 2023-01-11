@@ -7,8 +7,6 @@ const Menu = () => {
             <button onClick={() => navigate('/contact')}>Contact app</button>
             <br/>
             <Link to="/quiz">link Quiz</Link>
-            <br/>
-            <Link to="/contact">link Contact</Link>
         </nav>
     )
 }
