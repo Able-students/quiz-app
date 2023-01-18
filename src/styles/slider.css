@@ -1,0 +1,33 @@
+.slider-container, .slider-steps {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    justify-content: center;
+}
+
+.slider-container img {
+    width: 85%;
+}
+
+.slider-item{
+    text-align: center;
+}
+
+.slider-steps span {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: block;
+    margin: 5px;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.slider-steps {
+    margin-top: 10px;
+}
+
+.active-step {
+    opacity: 1 !important;
+}

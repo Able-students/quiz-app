@@ -5,8 +5,11 @@ const Menu = () => {
         <nav>
             <button onClick={() => navigate('/quiz')}>Quiz app</button>
             <button onClick={() => navigate('/contact')}>Contact app</button>
+            <button onClick={() => navigate('/slider')}>Slider</button>
+            {/* <br/>
             <Link to="/quiz">link Quiz</Link>
             <Link to="/quiz">link Contact</Link>
+            <Link to="/slider">link Slider</Link> */}
         </nav>
     )
 }

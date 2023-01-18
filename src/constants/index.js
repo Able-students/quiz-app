@@ -28,3 +28,4 @@ export const quiz_list = [
         score: 4
     }
 ]
+
