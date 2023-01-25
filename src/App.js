@@ -5,11 +5,6 @@ import ContactApp from './components/ContactApp'
 import Menu from './components/Menu';
 import Slider from './components/Slider';
 import MovieDetails from './components/MovieDetails'
-// Image Slider 
-// Упражнение React для создания слайда изображения, где пользователи могут просматривать несколько изображений 
-// с помощью кнопок «Далее/Предыдущее». Кроме того, есть также возможность выбрать изображение из любого индекса 
-// списка с помощью круга опций щелчка.
-
 
 export function App() {
   return (
