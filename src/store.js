@@ -14,7 +14,9 @@ export const initialState = {
     answer: [],
     score: 0,
     isCheck: false,
-    list: quiz_list
+    list: quiz_list,
+    productList: [],
+    basketList: []
 }
 
 
@@ -30,6 +32,16 @@ export function reducer(state, action) {
             return {
                 ...state,
                 counter: state.counter - 1
+            }
+        case 'setProductList':
+            return {
+                ...state,
+                productList: action.payload
+            }
+        case 'setBasketList':
+            return {
+                ...state,
+                basketList: action.payload
             }
         case 'setCheck':
             return {

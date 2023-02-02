@@ -9,6 +9,7 @@ import Slider from './components/Slider';
 import MovieDetails from './components/MovieDetails';
 import Form from './components/LoginForm';
 import Accordion from './components/Accordion';
+import Shop from './components/Shop';
 
 
 
@@ -24,6 +25,7 @@ export function App() {
         <Route path='/counter' element={<CounterApp />} />
         <Route path='/form' element={<Form />} />
         <Route path='/accordion' element={<Accordion />} />
+        <Route path='/shop' element={<Shop />} />
       </Routes>
     </BrowserRouter>
   );
