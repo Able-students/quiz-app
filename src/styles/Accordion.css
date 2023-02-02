@@ -1,0 +1,23 @@
+.Accordion {
+  max-width: 600px;
+  margin: auto;
+  padding: 0 16px;
+}
+.Accordion-Content {
+  padding: 10px;
+}
+.Accordion-Item {
+  border: 1px solid blue;
+}
+.Accordion-Item:not(.Accordion-Item:last-of-type) {
+  border-bottom: 0;
+}
+.Accordion-Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: aqua;
+  font-size: 20px;
+  padding: 0 10px;
+  cursor: pointer;
+}

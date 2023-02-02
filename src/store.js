@@ -3,19 +3,26 @@ export const initialState = {
     counter: 10,
     userInfo: {
         name: 'admin',
-        surname: 'admin',
+        email: 'admin@mail.ru',
         password: '123e432'
+    },
+    changeUser: {
+        name: '',
+        email: '',
+        password: ''
     },
     answer: [],
     score: 0,
     isCheck: false,
-    list: quiz_list
+    list: quiz_list,
+    productList: [],
+    basketList: []
 }
 
 
-export function reducer(state,action){
-    console.log(action);
-    switch(action?.type || action){
+export function reducer(state, action) {
+    // console.log(action);
+    switch (action?.type || action) {
         case 'increment':
             return {
                 ...state,
@@ -25,6 +32,16 @@ export function reducer(state,action){
             return {
                 ...state,
                 counter: state.counter - 1
+            }
+        case 'setProductList':
+            return {
+                ...state,
+                productList: action.payload
+            }
+        case 'setBasketList':
+            return {
+                ...state,
+                basketList: action.payload
             }
         case 'setCheck':
             return {
@@ -46,20 +63,58 @@ export function reducer(state,action){
                 ...state,
                 answer: action.payload
             }
-        case 'changeName':
+        case 'infoName':
             return {
                 ...state,
                 userInfo: {
                     name: action.payload,
-                    surname: state.userInfo.surname
+                    email: state.userInfo.email,
+                    password: state.userInfo.password
                 }
             }
-        case 'changeSurname':
+        case 'infoEmail':
             return {
                 ...state,
                 userInfo: {
                     name: state.userInfo.name,
-                    surname: action.payload,
+                    email: action.payload,
+                    password: state.userInfo.password
+                }
+            }
+        case 'infoPass':
+            return {
+                ...state,
+                userInfo: {
+                    name: state.userInfo.name,
+                    email: state.userInfo.email,
+                    password: action.payload
+                }
+            }
+        case 'changeName':
+            return {
+                ...state,
+                changeUser: {
+                    name: action.payload,
+                    email: state.changeUser.email,
+                    password: state.changeUser.password
+                }
+            }
+        case 'changeEmail':
+            return {
+                ...state,
+                changeUser: {
+                    name: state.changeUser.name,
+                    email: action.payload,
+                    password: state.changeUser.password
+                }
+            }
+        case 'changePass':
+            return {
+                ...state,
+                changeUser: {
+                    name: state.changeUser.name,
+                    email: state.changeUser.email,
+                    password: action.payload
                 }
             }
         default:
