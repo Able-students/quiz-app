@@ -1,12 +1,11 @@
-import { useReducer } from 'react'
 import { quiz_list } from '../constants/'
 import Question from './Question'
 import Menu from './Menu'
-
-import { initialState, reducer } from '../store'
+import { useSelector, useDispatch } from 'react-redux';
 
 function QuizApp() {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const dispatch = useDispatch()
+  const state = useSelector((state) => state.mainReducer)
   // const [answer,setAnswer] = useState([])
   // const [score,setScore] = useState(0)
   // const [isCheck,setCheck] = useState(false)

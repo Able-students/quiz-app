@@ -1,13 +1,14 @@
 import Header from "./Header";
 import { Card, Row, Col, Button, Drawer } from 'antd';
-import { initialState, reducer } from '../store';
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ShoppingCartOutlined } from '@ant-design/icons';
-
-import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import mainActions from "../store/actions/mainActions";
+import { loadProductList } from "../store/actions/mainActions";
 
 function Shop() {
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const dispatch = useDispatch()
+    const state = useSelector((state) => state.mainReducer)
     const [open, setOpen] = useState(false);
 
     const showDrawer = () => {
@@ -19,12 +20,7 @@ function Shop() {
     };
 
     useEffect(() => {
-        axios.get('https://fakestoreapi.com/products')
-            .then(res => {
-                dispatch({ type: "setProductList", payload: res.data })
-            }).catch(e => {
-                console.log(e.response);
-            })
+      dispatch(loadProductList())
     }, []);
 
     const [basket, setBasket] = useState([]);
@@ -60,7 +56,7 @@ function Shop() {
                             <Card
                                 title={elem.title}
                                 bordered={true}
-                                extra={<Button shape="circle" onClick={() => dispatch({ type: "setBasketList", payload: [...state.basketList, elem] })} icon={<ShoppingCartOutlined />} />}
+                                extra={<Button shape="circle" onClick={() => mainActions.setBasketList([...state.basketList, elem])} icon={<ShoppingCartOutlined />} />}
                                 style={{
                                     width: 300,
                                 }}

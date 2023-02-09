@@ -1,10 +1,10 @@
 import Menu from './Menu'
-import { useReducer } from 'react'
 import '../styles/Accordion.css'
-import { initialState, reducer } from '../store'
+import { useSelector, useDispatch } from 'react-redux';
 
 const AccordionItem = ({ el }) => {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const dispatch = useDispatch()
+    const state = useSelector((state) => state.mainReducer)
     return (
         <div className="Accordion-Item">
             <header

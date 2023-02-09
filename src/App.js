@@ -3,31 +3,33 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import QuizApp from './components/QuizApp'
 import ContactApp from './components/ContactApp'
 import CounterApp from './components/CounterApp'
-
 import Menu from './components/Menu';
 import Slider from './components/Slider';
 import MovieDetails from './components/MovieDetails';
 import Form from './components/LoginForm';
 import Accordion from './components/Accordion';
 import Shop from './components/Shop';
-
-
+import store from './store/store';
+import { Provider } from 'react-redux';
 
 export function App() {
+ 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Menu />} />
-        <Route path='/quiz' element={<QuizApp />} />
-        <Route path='/contact' element={<ContactApp />} />
-        <Route path='/slider' element={<Slider />} />
-        <Route path='/movie/' element={<MovieDetails />} />
-        <Route path='/counter' element={<CounterApp />} />
-        <Route path='/form' element={<Form />} />
-        <Route path='/accordion' element={<Accordion />} />
-        <Route path='/shop' element={<Shop />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Menu />} />
+          <Route path='/quiz' element={<QuizApp />} />
+          <Route path='/contact' element={<ContactApp />} />
+          <Route path='/slider' element={<Slider />} />
+          <Route path='/movie/' element={<MovieDetails />} />
+          <Route path='/counter' element={<CounterApp />} />
+          <Route path='/form' element={<Form />} />
+          <Route path='/accordion' element={<Accordion />} />
+          <Route path='/shop' element={<Shop />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

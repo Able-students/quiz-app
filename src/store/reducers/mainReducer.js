@@ -1,4 +1,6 @@
-import { quiz_list } from './constants'
+import { quiz_list } from '../../constants';
+import types from '../actions/types';
+
 export const initialState = {
     counter: 10,
     userInfo: {
@@ -19,21 +21,20 @@ export const initialState = {
     basketList: []
 }
 
-
-export function reducer(state, action) {
+export default function reducer(state = initialState, action) {
     // console.log(action);
-    switch (action?.type || action) {
-        case 'increment':
+    switch (action?.type) {
+        case types.INCREMENT:
             return {
                 ...state,
                 counter: state.counter + 1
             }
-        case 'decrement':
+        case types.DECREMENT:
             return {
                 ...state,
                 counter: state.counter - 1
             }
-        case 'setProductList':
+        case types.SET_PRODUCT_LIST:
             return {
                 ...state,
                 productList: action.payload
