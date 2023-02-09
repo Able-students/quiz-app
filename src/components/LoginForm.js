@@ -6,7 +6,7 @@ import '../styles/LoginForm.css'
 function Form() {
     const [state, dispatch] = useReducer(reducer, initialState)
     // console.log(state);
-    function CheckLogin() {
+    function checkLogin() {
         if (state.userInfo.name === state.changeUser.name) {
             if (state.userInfo.email === state.changeUser.email) {
                 if (state.userInfo.password === state.changeUser.password) {
@@ -29,7 +29,7 @@ function Form() {
                 <input className='Form-Inp Login' type={'text'} placeholder='Enter name' onChange={(e) => dispatch({ type: 'changeName', payload: e.target.value })} />
                 <input className='Form-Inp Email' type={'email'} placeholder='Enter email' onChange={(e) => dispatch({ type: 'changeEmail', payload: e.target.value })} />
                 <input className='Form-Inp Password' type={'password'} placeholder='Enter password' onChange={(e) => dispatch({ type: 'changePass', payload: e.target.value })} />
-                <input className='Form-Inp Btn' type={'submit'} value={'Click'} onClick={CheckLogin} />
+                <input className='Form-Inp Btn' type={'submit'} value={'Click'} onClick={checkLogin} />
             </div>
         </div>
     )
