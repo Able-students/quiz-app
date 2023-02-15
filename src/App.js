@@ -10,6 +10,7 @@ import Form from './components/LoginForm';
 import Accordion from './components/Accordion';
 import Shop from './components/Shop';
 import store from './store/store';
+import MovieList from './components/MovieList';
 import { Provider } from 'react-redux';
 
 export function App() {
@@ -23,6 +24,7 @@ export function App() {
           <Route path='/contact' element={<ContactApp />} />
           <Route path='/slider' element={<Slider />} />
           <Route path='/movie/' element={<MovieDetails />} />
+          <Route path='/movie-list/' element={<MovieList />} />
           <Route path='/counter' element={<CounterApp />} />
           <Route path='/form' element={<Form />} />
           <Route path='/accordion' element={<Accordion />} />

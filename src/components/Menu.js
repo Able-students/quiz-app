@@ -7,6 +7,7 @@ const Menu = () => {
             <button onClick={() => navigate('/quiz')}>Quiz app</button>
             <button onClick={() => navigate('/contact')}>Contact app</button>
             <button onClick={() => navigate('/slider')}>Slider</button>
+            <button onClick={() => navigate('/movie-list')}>Movie list</button>
             <button onClick={() => navigate('/counter')}>Counter App</button>
             <button onClick={() => navigate('/form')}>Login</button>
             <button onClick={() => navigate('/accordion')}>Accordion menu</button>

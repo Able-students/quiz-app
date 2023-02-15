@@ -1,5 +1,5 @@
 import Header from "./Header";
-import { Card, Row, Col, Button, Drawer } from 'antd';
+import { Card, Row, Col, Button, Drawer, Spin, Result, Pagination } from 'antd';
 import { useEffect, useState } from 'react';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,7 +10,7 @@ function Shop() {
     const dispatch = useDispatch()
     const state = useSelector((state) => state.mainReducer)
     const [open, setOpen] = useState(false);
-
+    const [list, setList] = useState(state.productList?.slice(0,4))
     const showDrawer = () => {
         setOpen(true);
     };
@@ -56,12 +56,15 @@ function Shop() {
         arrCopy.splice(index, 1);
         mainActions.setBasketList(arrCopy);
     }
+    useEffect(() => {
+        setList(state.productList?.slice(0,4))
+    },[state.productList])
     return (
         <div>
             <Header basketItems={state.basketList.length} showDrawer={showDrawer} />
             <Row>
                 {
-                    state.productList.map((elem => (
+                    list?.length > 0 ? list.map((elem => (
                         <Col span={6} key={elem.id} style={{ marginBottom: '10px' }}>
                             <Card
                                 title={elem.title}
@@ -76,9 +79,31 @@ function Shop() {
                                 <h3>{elem.price} $</h3>
                             </Card>
                         </Col>
-                    )))
+                    ))) : state.error === '404' ? 
+                            <Col span={24}>
+                                <Result
+                                status="404"
+                                title="404"
+                                subTitle="Sorry, the page you visited does not exist."
+                                extra={<Button type="primary">Back Home</Button>}
+                                />
+                            </Col> :
+                            <Col span={24} style={{marginTop: '20%'}}>
+                                <Spin tip="Loading" size="large">
+                                    <div className="content" />
+                                </Spin>
+                            </Col>
                 }
             </Row>
+            {list?.length > 0 && 
+                <div className="center">
+                    <Pagination 
+                        defaultPageSize={4} 
+                        onChange={(page) => setList(state.productList.slice((page-1) * 4, page * 4))} 
+                        defaultCurrent={1} 
+                        total={20}
+                    />
+                </div>}
             <Drawer title="Basket" placement="right" onClose={onClose} open={open}>
                 {
                     basket?.map((elem => (

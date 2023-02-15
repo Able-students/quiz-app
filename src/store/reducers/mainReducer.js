@@ -18,7 +18,8 @@ export const initialState = {
     isCheck: false,
     list: quiz_list,
     productList: [],
-    basketList: []
+    basketList: [],
+    error: null
 }
 
 export default function reducer(state = initialState, action) {
@@ -28,6 +29,11 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 counter: state.counter + 1
+            }
+        case types.SET_ERROR:
+            return {
+                ...state,
+                error: action.payload
             }
         case types.DECREMENT:
             return {
