@@ -1,20 +1,19 @@
 import Menu from './Menu'
 import '../styles/Accordion.css'
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 const AccordionItem = ({ el }) => {
-    const dispatch = useDispatch()
-    const state = useSelector((state) => state.mainReducer)
+    const [isCheck, setIsCheck] = useState(false);
     return (
         <div className="Accordion-Item">
             <header
                 className="Accordion-Header"
-                onClick={() => dispatch({ type: 'setCheck', payload: !state.isCheck })}
+                onClick={() => setIsCheck(!isCheck)}
             >
                 <h3>{el.title}</h3>
-                <span>{state.isCheck ? '-' : '+'}</span>
+                <span>{isCheck ? '-' : '+'}</span>
             </header>
-            {state.isCheck && <div className="Accordion-Content">{el.content}</div>}
+            {isCheck && <div className="Accordion-Content">{el.content}</div>}
         </div >
     )
 }
