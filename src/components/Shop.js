@@ -20,7 +20,7 @@ function Shop() {
     };
 
     useEffect(() => {
-      dispatch(loadProductList())
+        dispatch(loadProductList())
     }, []);
 
     const [basket, setBasket] = useState([]);
@@ -41,11 +41,21 @@ function Shop() {
                 arr.push(element);
             }
         })
-        console.log(count);
+        // console.log(count);
+        arr.sort((a, b) => a.id - b.id);
         setFullTotal(total.toFixed(2));
         setBasket(arr);
     }, [state.basketList]);
-
+    function delCard(id) {
+        let arrN = state.basketList.filter(el => el.id !== id)
+        mainActions.setBasketList(arrN);
+    }
+    function delCount(id) {
+        let arrCopy = [...state.basketList];
+        let index = arrCopy.findIndex(el => el.id === id)
+        arrCopy.splice(index, 1);
+        mainActions.setBasketList(arrCopy);
+    }
     return (
         <div>
             <Header basketItems={state.basketList.length} showDrawer={showDrawer} />
@@ -89,7 +99,14 @@ function Shop() {
                                     <h3>{elem.price} $</h3>
                                     <span>Quantity: {elem.count}</span>
                                     <p>Total price: {elem.count * elem.price} $</p>
+
                                 </Col>
+                            </Row>
+                            <Row>
+                                <Col span={16}>{
+                                    (elem.count > 1) ? <button onClick={() => delCount(elem.id)}>count-1</button> : ''
+                                }</Col>
+                                <Col span={8}><button onClick={() => delCard(elem.id)}>Delete</button></Col>
                             </Row>
                         </Card>
                     )))
